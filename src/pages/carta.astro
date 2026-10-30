@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import CartaList from "../components/CartaList.astro";
+import CartaMenu from "../components/CartaMenu.astro";
 import { menuJsonLd, site } from "../data/site";
 
 const description =
@@ -8,5 +8,5 @@ const description =
 ---
 
 <Base title={`Carta | ${site.name} · Alcoy`} description={description} jsonLd={menuJsonLd()}>
-  <CartaList heading="h1" />
+  <CartaMenu />
 </Base>

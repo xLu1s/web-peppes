@@ -1,0 +1,65 @@
+---
+import { asset, href, menu, site } from "../data/site";
+---
+
+<section class="band" id="carta">
+  <div class="wrap">
+    <div class="menu-head" data-reveal>
+      <div>
+        <p class="eyebrow">Carta</p>
+        <h2>Qué se pide</h2>
+      </div>
+      <a class="btn btn-fill" href={`tel:${site.phoneTel}`}>Llamar</a>
+    </div>
+    <p class="price-legend" data-reveal>
+      Precios en el local · <strong class="flag">[por confirmar]</strong>
+    </p>
+    <p class="menu-note" data-reveal>
+      Una lista corta, sacada de reseñas y de sus redes. No es la carta entera y no lleva precios.
+    </p>
+    <ul class="teaser-list">
+      {
+        menu.map((section) => (
+          <li data-reveal>
+            <a href={href(`/carta#${section.id}`)}>
+              <span>{section.name}</span>
+              <small>{section.items.map((item) => item.name).join(" · ")}</small>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="teaser-photos">
+      <figure data-reveal>
+        <img
+          src={asset("images/tostada-zumo.jpg")}
+          width="1000"
+          height="1333"
+          alt="Tostada y zumo de naranja en una mesa del local."
+          loading="lazy"
+        />
+      </figure>
+      <figure data-reveal>
+        <img
+          src={asset("images/cafe-leche.jpg")}
+          width="1000"
+          height="750"
+          alt="Café con leche en una mesa de mármol."
+          loading="lazy"
+        />
+      </figure>
+      <figure data-reveal>
+        <img
+          src={asset("images/flatlay.jpg")}
+          width="1080"
+          height="1920"
+          alt="De grano a latte: cuatro tazas vistas desde arriba."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+    <p class="ig-link">
+      <a class="btn btn-line" href={href("/carta")}>Ver la carta</a>
+    </p>
+  </div>
+</section>

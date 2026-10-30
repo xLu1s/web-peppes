@@ -1,0 +1,44 @@
+---
+import { asset } from "../data/site";
+
+const shots = [
+  {
+    src: "images/fachada-maps.jpg",
+    w: 1000,
+    h: 1333,
+    alt: "Fachada negra de Pepe's en la Alameda, con el toldo y la banderola del teckel.",
+    caption: "La Alameda, 62",
+  },
+  {
+    src: "images/terraza-desayuno.jpg",
+    w: 1000,
+    h: 1778,
+    alt: "Café y tostada en la terraza, con la servilletera de Pepe's.",
+    caption: "En la terraza",
+  },
+  {
+    src: "images/interior-bici.jpg",
+    w: 1000,
+    h: 1333,
+    alt: "Interior del local: bici en la pared de ladrillo y un café en la mesa.",
+    caption: "Dentro",
+  },
+];
+---
+
+<section class="photo-strip" aria-label="Fotos del local">
+  {
+    shots.map((shot) => (
+      <figure>
+        <img
+          src={asset(shot.src)}
+          width={shot.w}
+          height={shot.h}
+          alt={shot.alt}
+          loading="lazy"
+        />
+        <figcaption>{shot.caption}</figcaption>
+      </figure>
+    ))
+  }
+</section>
