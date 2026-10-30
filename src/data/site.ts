@@ -307,7 +307,6 @@ export const media = {
   fachada: "images/fachada-maps.jpg",
   fachadaWidth: 1000,
   fachadaHeight: 1333,
-  heroVideo: "videos/hero-cup.mp4",
   heroPoster: "images/flatlay.jpg",
   heroPosterWidth: 1080,
   heroPosterHeight: 1920,
