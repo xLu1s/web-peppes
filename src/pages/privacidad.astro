@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+
+const description = `Privacidad de la web de ${site.name}. Esta versión no tiene formularios ni analítica.`;
+---
+
+<Base title={`Privacidad | ${site.name}`} description={description}>
+  <article class="wrap legal">
+    <header class="page-hero">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacidad</h1>
+    </header>
+    <p>
+      Responsable: {site.name}
+      <strong class="flag">[por confirmar]</strong> la razón social.
+      Dirección: {site.address.street}, {site.address.postalCode} {site.address.locality}.
+      Correo: <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+    <h2>Qué datos hay</h2>
+    <p>
+      Esta versión no tiene formularios, cuentas ni analítica. Si llamas o escribes al correo,
+      el local usa esos datos solo para responderte. No se venden ni se ceden para publicidad.
+    </p>
+    <h2>El mapa</h2>
+    <p>
+      La página de inicio incluye un mapa de Google. Al cargarlo, Google puede recibir tu dirección IP
+      y guardar cookies suyas. Si no quieres, usa el enlace «Cómo llegar» o «Abrir en Google Maps»
+      en lugar de mirar el mapa embebido.
+    </p>
+    <h2>Tus derechos</h2>
+    <p>
+      Puedes pedir acceso, rectificación o supresión escribiendo a
+      <a href={`mailto:${site.email}`}>{site.email}</a>.
+      También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).
+    </p>
+  </article>
+</Base>

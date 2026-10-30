@@ -1,0 +1,54 @@
+---
+import { href, menu, site } from "../data/site";
+
+interface Props {
+  heading?: "h1" | "h2";
+}
+
+const { heading = "h2" } = Astro.props;
+const Title = heading;
+---
+
+<section class="band" id="carta">
+  <div class="wrap">
+    <div class="menu-head" data-reveal>
+      <div>
+        <p class="eyebrow">Carta</p>
+        <Title>{heading === "h1" ? "La carta" : "Qué se pide"}</Title>
+      </div>
+      <a class="btn btn-fill" href={`tel:${site.phoneTel}`}>Pregúntanos</a>
+    </div>
+    <p class="menu-note" data-reveal>
+      No hay carta con precios publicada. Lo de abajo sale de reseñas y de sus redes:
+      categorías, sin precios inventados. Si quieres el de hoy, llama o pásate. 🖤
+    </p>
+    <div>
+      {
+        menu.map((item) => (
+          <article class="dish" data-reveal>
+            <span class="n">{item.n}</span>
+            <div>
+              <h3>{item.name}</h3>
+              <p>{item.text}</p>
+              {"pending" in item && item.pending && (
+                <p class="pending">
+                  <strong class="flag">[por confirmar]</strong> {item.pending}
+                </p>
+              )}
+            </div>
+            <a class="ask" href={`tel:${site.phoneTel}`}>
+              Pregúntanos
+            </a>
+          </article>
+        ))
+      }
+    </div>
+    {
+      heading === "h2" && (
+        <p class="ig-link">
+          <a href={href("/carta")}>Ver la carta en su página</a>
+        </p>
+      )
+    }
+  </div>
+</section>

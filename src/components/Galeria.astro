@@ -1,0 +1,31 @@
+---
+import { asset, gallery, site } from "../data/site";
+---
+
+<section class="band" id="galeria">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Galería</p>
+    <h2 data-reveal>La barra y el café.</h2>
+    <div class="gallery-grid">
+      {
+        gallery.map((photo, index) => (
+          <figure class={index === 0 ? "shot-bar" : "shot-cup"} data-reveal>
+            <img
+              src={asset(photo.src)}
+              width={photo.width}
+              height={photo.height}
+              alt={photo.alt}
+              loading="lazy"
+            />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+    <p class="ig-link" data-reveal>
+      <a href={site.social.instagram.url} rel="noopener noreferrer">
+        Síguenos en Instagram {site.social.instagram.handle}
+      </a>
+    </p>
+  </div>
+</section>

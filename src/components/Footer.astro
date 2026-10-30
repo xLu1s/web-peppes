@@ -1,0 +1,52 @@
+---
+import { href, hours, site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>{site.shortName}</h2>
+      <p>Cafetería, cervecería y selección de vinos.</p>
+      <p>Te esperamos. 🖤</p>
+    </div>
+    <div>
+      <p>
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.locality} ({site.address.localityAlt})<br />
+        {site.address.region}
+      </p>
+      <p><a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a></p>
+      <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+    </div>
+    <div>
+      <ul>
+        <li>
+          <a href={site.social.instagram.url} rel="noopener noreferrer">
+            Instagram {site.social.instagram.handle}
+          </a>
+        </li>
+        <li>
+          <a href={site.social.facebook.url} rel="noopener noreferrer">
+            Facebook /{site.social.facebook.handle}
+          </a>
+        </li>
+        <li><a href={href("/carta")}>Carta</a></li>
+        <li><a href={href("#donde")}>Cómo llegar</a></li>
+      </ul>
+      <p>
+        {hours.rows.map((row) => `${row.days}: ${row.time}`).join(" · ")}
+        <span class="flag">[por confirmar]</span>
+      </p>
+    </div>
+  </div>
+  <div class="wrap">
+    <nav class="footer-meta" aria-label="Legal">
+      <a href={href("/aviso-legal")}>Aviso legal</a>
+      <a href={href("/privacidad")}>Privacidad</a>
+      <a href={href("/cookies")}>Cookies</a>
+    </nav>
+    <p class="demo-note">
+      Web demo de {site.name}. El horario y los datos marcados [por confirmar] hay que cerrarlos con el local antes de darlos por buenos.
+    </p>
+  </div>
+</footer>

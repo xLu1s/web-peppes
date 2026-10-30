@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+
+const description = `Cookies de la web de ${site.name}. No hay analítica propia; el mapa de Google puede usar cookies.`;
+---
+
+<Base title={`Cookies | ${site.name}`} description={description}>
+  <article class="wrap legal">
+    <header class="page-hero">
+      <p class="eyebrow">Legal</p>
+      <h1>Cookies</h1>
+    </header>
+    <p>
+      Esta versión de la web de {site.name} no instala cookies propias de analítica ni de publicidad.
+    </p>
+    <h2>Mapa de Google</h2>
+    <p>
+      Si visitas la portada, el mapa embebido puede hacer que Google guarde cookies en tu navegador.
+      Son cookies de un tercero. Para evitarlas, no hace falta el mapa: la dirección, el teléfono
+      y el enlace para llegar están escritos en la misma página.
+    </p>
+    <h2>El navegador</h2>
+    <p>
+      Puedes borrar o bloquear cookies desde la configuración de tu navegador. Bloquear las de Google
+      no impide leer la carta ni llamar al {site.phoneDisplay}.
+    </p>
+  </article>
+</Base>

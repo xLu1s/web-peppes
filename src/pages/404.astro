@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+import { asset, href, site } from "../data/site";
+---
+
+<Base title={`Página no encontrada | ${site.name}`} description="Esta página no está en la carta de Pepe's.">
+  <div class="wrap lost">
+    <img class="dog" src={asset("images/dog.jpg")} width="330" height="180" alt="" />
+    <h1>Aquí no hay café.</h1>
+    <p class="lede">Esta página no existe. La carta, sí.</p>
+    <div class="cta">
+      <a class="btn btn-fill" href={href()}>Volver al inicio</a>
+      <a class="btn btn-line" href={href("/carta")}>Ver carta</a>
+      <a class="btn btn-line" href={`tel:${site.phoneTel}`}>Llamar</a>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,31 @@
+---
+import { asset, href, media, nav, site } from "../data/site";
+
+const onCarta = Astro.url.pathname.includes("/carta");
+---
+
+<header class="site-header">
+  <a class="brand" href={href()}>
+    <img
+      src={asset(media.logo)}
+      width={media.logoWidth}
+      height={media.logoHeight}
+      alt={site.name}
+    />
+  </a>
+  <input class="nav-check" id="nav-toggle" type="checkbox" />
+  <label class="nav-toggle" for="nav-toggle">Menú</label>
+  <nav class="nav-panel" aria-label="Secciones">
+    {
+      nav.map((item) => (
+        <a
+          href={href(item.href)}
+          aria-current={item.href === "/carta" && onCarta ? "page" : undefined}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+  <a class="btn btn-fill header-call" href={`tel:${site.phoneTel}`}>Llamar</a>
+</header>

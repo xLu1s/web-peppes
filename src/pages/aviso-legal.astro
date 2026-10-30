@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+
+const description = `Aviso legal de ${site.name}, cafetería en Alcoi. Borrador pendiente de los datos fiscales.`;
+---
+
+<Base title={`Aviso legal | ${site.name}`} description={description}>
+  <article class="wrap legal">
+    <header class="page-hero">
+      <p class="eyebrow">Legal</p>
+      <h1>Aviso legal</h1>
+    </header>
+    <p>
+      Este sitio informa sobre {site.name}, cafetería, cervecería y selección de vinos
+      en {site.address.street}, {site.address.postalCode} {site.address.locality} ({site.address.localityAlt}).
+    </p>
+    <h2>Titular</h2>
+    <p>
+      Nombre comercial: {site.name}. La razón social, el NIF o CIF y los datos registrales
+      están <strong class="flag">[por confirmar]</strong>. Hasta entonces, el contacto del local es
+      el teléfono <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a> y el correo
+      <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+    <h2>Para qué está esta web</h2>
+    <p>
+      Para contar qué es el local, qué se suele pedir y cómo llegar. No vende online
+      y no recoge reservas. Esta versión es una demo: el horario publicado hay que confirmarlo con el negocio.
+    </p>
+    <h2>Propiedad intelectual</h2>
+    <p>
+      El nombre, el logotipo del teckel y las fotos del local pertenecen a sus titulares.
+      Las fotografías salen de material público del negocio y de fichas de directorios;
+      el uso definitivo lo tiene que autorizar el local. No copies la marca ni las fotos sin permiso.
+    </p>
+  </article>
+</Base>

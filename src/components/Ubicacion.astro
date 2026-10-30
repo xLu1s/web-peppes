@@ -1,0 +1,52 @@
+---
+import { hours, maps, site } from "../data/site";
+---
+
+<section class="band" id="donde">
+  <div class="wrap where-grid">
+    <div data-reveal>
+      <p class="eyebrow">Ubicación</p>
+      <h2>En la Alameda.</h2>
+      <address class="address-block">
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.locality} ({site.address.localityAlt})<br />
+        {site.address.region} · {site.address.neighborhood}
+      </address>
+      <div class="contact-links">
+        <a class="btn btn-fill" href={`tel:${site.phoneTel}`}>Llamar</a>
+        <a class="btn btn-line" href={maps.directions} rel="noopener noreferrer">Cómo llegar</a>
+      </div>
+      <p class="phone-line">
+        <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+        · <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <div class="hours">
+        <div class="hours-top">
+          <p>Horario</p>
+          <strong class="flag">[por confirmar]</strong>
+        </div>
+        {
+          hours.rows.map((row) => (
+            <div class="hours-row">
+              <span>{row.days}</span>
+              <strong>{row.time}</strong>
+            </div>
+          ))
+        }
+        <p class="hours-note">{hours.disclaimer}</p>
+        <p class="busy">{hours.busy}</p>
+      </div>
+      <p class="ig-link">
+        <a href={maps.search} rel="noopener noreferrer">Abrir en Google Maps</a>
+      </p>
+    </div>
+    <div class="map-frame" data-reveal>
+      <iframe
+        title="Mapa de Pepe's Coffee & Co. en la Alameda de Alcoi"
+        src={maps.embed}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>
