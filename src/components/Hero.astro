@@ -1,0 +1,84 @@
+---
+import { asset, href, media, rating, site } from "../data/site";
+
+const poster = asset(media.heroPoster);
+const video = asset(media.heroVideo);
+---
+
+<section class="hero" id="inicio" aria-label="Pepe's Coffee & Co.">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Alcoi · l'Eixample</p>
+      <h1>
+        <span class="name">Pepe's</span>
+        <span class="co">Coffee &amp; Co.</span>
+      </h1>
+      <p class="claim">Por la mañana, café. Por la tarde, cañas.</p>
+      <p class="lede">
+        Cafetería, cervecería y selección de vinos en la Alameda de {site.address.localityAlt}.
+        En pleno centro.
+      </p>
+      <div class="cta">
+        <a class="btn btn-fill" href={`tel:${site.phoneTel}`}>Llamar</a>
+        <a class="btn btn-line" href={href("/carta")}>Ver carta</a>
+      </div>
+      <p class="phone-line">
+        <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+        · teléfono fijo
+      </p>
+      <p class="rating-line">
+        <strong>⚠️ {rating.line}</strong>
+        <span class="fine">{rating.note}</span>
+      </p>
+    </div>
+    <figure class="hero-figure">
+      <div class="hero-stage">
+        <img
+          class="hero-poster"
+          src={poster}
+          width={media.heroPosterWidth}
+          height={media.heroPosterHeight}
+          alt="Cuatro tazas vistas desde arriba: grano, café molido, espresso y un latte con corazón."
+          fetchpriority="high"
+        />
+        <video
+          id="hero-cup"
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="none"
+          poster={poster}
+          aria-hidden="true"
+        >
+          <source src={video} type="video/mp4" />
+        </video>
+        <div class="steam" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </div>
+      </div>
+      <figcaption class="stage-caption">De grano a taza</figcaption>
+    </figure>
+  </div>
+  <script is:inline>
+    (function () {
+      var v = document.getElementById("hero-cup");
+      if (!v) return;
+      v.muted = true;
+      v.setAttribute("playsinline", "");
+      if (document.documentElement.classList.contains("reduce-motion")) {
+        v.removeAttribute("autoplay");
+        v.pause();
+        v.querySelectorAll("source").forEach(function (source) {
+          source.remove();
+        });
+        v.removeAttribute("src");
+        return;
+      }
+      v.preload = "metadata";
+      var play = v.play();
+      if (play && play.catch) play.catch(function () {});
+    })();
+  </script>
+</section>

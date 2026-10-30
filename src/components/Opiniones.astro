@@ -1,0 +1,26 @@
+---
+import { rating, reviews } from "../data/site";
+---
+
+<section class="opiniones" id="opiniones">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Opiniones</p>
+    <h2 data-reveal>Lo que dicen al salir.</h2>
+    <p class="rating-line" data-reveal>
+      <strong>⚠️ {rating.line}</strong>
+      <span class="fine">{rating.note}</span>
+    </p>
+    <div class="quote-list">
+      {
+        reviews.map((review) => (
+          <blockquote data-reveal>
+            <p>«{review.quote}»</p>
+            <footer>
+              {review.author} · {review.meta}
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>

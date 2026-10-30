@@ -1,0 +1,56 @@
+---
+import { asset, media, site } from "../data/site";
+---
+
+<section class="band" id="el-local">
+  <div class="wrap">
+    <div class="dots" aria-hidden="true"></div>
+    <div class="sobre-grid">
+      <div class="prose" data-reveal>
+        <p class="eyebrow">El local</p>
+        <h2>Café, cañas y un sitio en la Alameda.</h2>
+        <p>
+          {site.name} es cafetería, cervecería y selección de vinos. Por la mañana,
+          café y tostadas. Por la tarde, terraza, cañas y copas. Así se presentan
+          y así lo cuentan quienes pasan por aquí.
+        </p>
+        <p>
+          Está en pleno centro de {site.address.localityAlt}, en {site.address.neighborhood},
+          delante de una plaza. Las reseñas hablan de dos terrazas y de un interior acogedor.
+        </p>
+        <p>
+          El equipo es, según quien reseña, cercano y atento. 🖤
+        </p>
+        <p>
+          El vídeo de la inauguración es del 13 de marzo de 2016 y la presenta como recién abierta.
+          <strong class="flag">[por confirmar]</strong> el día exacto.
+        </p>
+        <ul class="facts">
+          <li>
+            <span>Dónde</span>
+            Alameda, 62 · {site.address.locality}
+          </li>
+          <li>
+            <span>Desde</span>
+            2016 <strong class="flag">[por confirmar]</strong>
+          </li>
+          <li>
+            <span>Qué</span>
+            Café, cañas y vinos
+          </li>
+        </ul>
+      </div>
+      <figure data-reveal>
+        <img
+          class="fachada"
+          src={asset(media.fachada)}
+          width={media.fachadaWidth}
+          height={media.fachadaHeight}
+          alt="Fachada negra de Pepe's en la Alameda, con toldo negro y la banderola del teckel."
+          loading="lazy"
+        />
+        <figcaption class="stage-caption caption-left">La Alameda, 62</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
