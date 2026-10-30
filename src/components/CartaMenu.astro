@@ -10,8 +10,8 @@ import { asset, menu, site } from "../data/site";
       Precios en el local · <strong class="flag">[por confirmar]</strong>
     </p>
     <p class="lede">
-      Lo que se pide, según reseñas y redes. No es la carta completa y no hay precios publicados.
-      Si quieres el de hoy, llama. 🖤
+      Lo que se pide, según reseñas, redes y la pizarra. No es la carta completa.
+      El cubo de botellines es el único precio publicado. El resto, en el local. 🖤
     </p>
     <div class="cta">
       <a class="btn btn-fill" href={`tel:${site.phoneTel}`}>Llamar · {site.phoneDisplay}</a>
@@ -46,7 +46,10 @@ import { asset, menu, site } from "../data/site";
             <ul class="plates">
               {section.items.map((item) => (
                 <li>
-                  <h3>{item.name}</h3>
+                  <h3>
+                    <span>{item.name}</span>
+                    {"price" in item && item.price ? <span class="price">{item.price}</span> : null}
+                  </h3>
                   <p>{item.text}</p>
                 </li>
               ))}
