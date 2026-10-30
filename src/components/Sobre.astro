@@ -40,17 +40,39 @@ import { asset, media, site } from "../data/site";
           </li>
         </ul>
       </div>
-      <figure data-reveal>
-        <img
-          class="fachada"
-          src={asset(media.fachada)}
-          width={media.fachadaWidth}
-          height={media.fachadaHeight}
-          alt="Fachada negra de Pepe's en la Alameda, con toldo negro y la banderola del teckel."
-          loading="lazy"
-        />
-        <figcaption class="stage-caption caption-left">La Alameda, 62</figcaption>
-      </figure>
+      <div class="local-photos" data-reveal>
+        <figure>
+          <img
+            class="fachada"
+            src={asset(media.fachada)}
+            width={media.fachadaWidth}
+            height={media.fachadaHeight}
+            alt="Fachada negra de Pepe's en la Alameda, con el toldo y la banderola del teckel."
+            loading="lazy"
+          />
+          <figcaption class="stage-caption caption-left">La Alameda, 62</figcaption>
+        </figure>
+        <div class="local-pair">
+          <figure>
+            <img
+              src={asset("images/bici.jpg")}
+              width="1000"
+              height="750"
+              alt="Bicicleta blanca colgada en la pared de ladrillo."
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src={asset("images/cuadro-teckel.jpg")}
+              width="1000"
+              height="1333"
+              alt="Cuadro de un teckel en la pared del local."
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </div>
     </div>
   </div>
 </section>

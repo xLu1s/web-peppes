@@ -5,11 +5,14 @@ import { asset, gallery, site } from "../data/site";
 <section class="band" id="galeria">
   <div class="wrap">
     <p class="eyebrow" data-reveal>Galería</p>
-    <h2 data-reveal>La barra y el café.</h2>
-    <div class="gallery-grid">
+    <h2 data-reveal>El local, en fotos.</h2>
+    <p class="menu-note" data-reveal>
+      Fachada, barra, terraza, desayunos y café. Lo que se ve al pasar y al sentarse. 🖤
+    </p>
+    <div class="mosaic">
       {
-        gallery.map((photo, index) => (
-          <figure class={index === 0 ? "shot-bar" : "shot-cup"} data-reveal>
+        gallery.map((photo) => (
+          <figure data-reveal>
             <img
               src={asset(photo.src)}
               width={photo.width}

@@ -9,8 +9,12 @@ export const origin = "https://xlu1s.github.io";
 
 export function href(path = ""): string {
   if (path.startsWith("#")) return `${base}${path}`;
-  const clean = path.replace(/^\/+|\/+$/g, "");
-  return clean ? `${base}${clean}/` : base;
+  const hashAt = path.indexOf("#");
+  const frag = hashAt >= 0 ? path.slice(hashAt) : "";
+  const raw = hashAt >= 0 ? path.slice(0, hashAt) : path;
+  const clean = raw.replace(/^\/+|\/+$/g, "");
+  const url = clean ? `${base}${clean}/` : base;
+  return `${url}${frag}`;
 }
 
 export function asset(path: string): string {
@@ -91,35 +95,74 @@ export const nav = [
 
 export const menu = [
   {
-    n: "01",
+    id: "cafes",
     name: "Cafés",
-    text: "Espresso, café con leche y latte art. Es de lo que más se habla en las reseñas.",
+    intro: "Espresso, café con leche y latte. Es de lo que más hablan las reseñas.",
+    image: "images/cafe-leche.jpg",
+    imageAlt: "Café con leche en una mesa de mármol.",
+    imageW: 1000,
+    imageH: 750,
+    items: [
+      { name: "Espresso", text: "Café solo." },
+      { name: "Café con leche", text: "El que sale, una y otra vez, en las reseñas." },
+      { name: "Latte", text: "Con latte art." },
+    ],
+    note: "Otros cafés del local.",
   },
   {
-    n: "02",
+    id: "desayunos",
     name: "Desayunos y tostadas",
-    text: "Desayunos y tostadas con pan crujiente y buen aceite.",
+    intro: "Desayunos y tostadas con pan crujiente y buen aceite.",
+    image: "images/desayuno-mesa.jpg",
+    imageAlt: "Tostadas, tortilla y café con leche en una mesa del local.",
+    imageW: 1000,
+    imageH: 1333,
+    items: [
+      { name: "Desayunos", text: "Lo que piden por la mañana." },
+      { name: "Tostadas", text: "Pan crujiente y buen aceite." },
+    ],
   },
   {
-    n: "03",
+    id: "dulces",
     name: "Dulces",
-    text: "Coca, bizcocho y tarta.",
-    pending: "El tipo de coca, y si es de obrador propio, está por confirmar.",
+    intro: "Coca, bizcocho y tarta.",
+    items: [
+      { name: "Coca", text: "La mencionan en las reseñas. El tipo está por confirmar." },
+      { name: "Bizcocho / tarta", text: "Dulce para acompañar el café." },
+    ],
+    note: "El tipo de coca.",
   },
   {
-    n: "04",
+    id: "bocadillos",
     name: "Bocadillos y tapas",
-    text: "Bocadillos —también para cenar— y tapas. Salen mucho en las reseñas.",
+    intro: "Bocadillos, también para cenar, y algo de tapeo.",
+    items: [
+      { name: "Bocadillos", text: "Muy elogiados. También para cenar." },
+      { name: "Tapas / aperitivo", text: "Tapeo y aperitivo." },
+    ],
   },
   {
-    n: "05",
+    id: "canas",
     name: "Cañas y cerveza",
-    text: "Cañas por la tarde. Las reseñas cuentan que la terraza se llena.",
+    intro: "Por la tarde la terraza se llena.",
+    image: "images/terraza-acera.webp",
+    imageAlt: "Mesas y sombrillas en la acera de la Alameda.",
+    imageW: 580,
+    imageH: 327,
+    items: [{ name: "Cañas / cerveza", text: "Cañas en la terraza, por la tarde." }],
   },
   {
-    n: "06",
+    id: "vinos",
     name: "Vinos y copas",
-    text: "Selección de vinos, copas y aperitivo, como dicen en su Facebook.",
+    intro: "Cafetería, cervecería y selección de vinos: así se presentan.",
+    image: "images/barra-tazas-4.jpg",
+    imageAlt: "Tazas de rayas en la barra, con la cafetera al fondo.",
+    imageW: 1080,
+    imageH: 810,
+    items: [
+      { name: "Selección de vinos", text: "Figura así en su Facebook." },
+      { name: "Copas", text: "Copas y aperitivo." },
+    ],
   },
 ] as const;
 
@@ -151,11 +194,81 @@ export const reviews = [
 
 export const gallery = [
   {
-    src: "images/barra-tazas.jpg",
+    src: "images/fachada-maps.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "Fachada negra de Pepe's en la Alameda, con el toldo y la banderola del teckel.",
+    caption: "La fachada",
+  },
+  {
+    src: "images/interior-bici.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "Interior con la bici blanca en la pared de ladrillo y un café en primer plano.",
+    caption: "Dentro",
+  },
+  {
+    src: "images/barra-tazas-4.jpg",
     width: 1080,
     height: 810,
-    alt: "Tres tazas de rayas verdes, naranjas y azules en la barra de mármol, con la cafetera al fondo.",
+    alt: "Tres tazas de rayas verdes, naranjas y azules en la barra de mármol.",
     caption: "La barra",
+  },
+  {
+    src: "images/terraza-desayuno.jpg",
+    width: 1000,
+    height: 1778,
+    alt: "Café y tostada en la terraza, con la servilletera de Pepe's.",
+    caption: "La terraza",
+  },
+  {
+    src: "images/desayuno-mesa.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "Tostadas, tortilla y café con leche en una mesa de mármol.",
+    caption: "Para desayunar",
+  },
+  {
+    src: "images/cafe-leche.jpg",
+    width: 1000,
+    height: 750,
+    alt: "Café con leche en una taza blanca sobre mármol.",
+    caption: "Café con leche",
+  },
+  {
+    src: "images/tostada-zumo.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "Tostada y zumo de naranja en una mesa del local.",
+    caption: "Tostada",
+  },
+  {
+    src: "images/bici.jpg",
+    width: 1000,
+    height: 750,
+    alt: "Bicicleta blanca colgada en la pared de ladrillo.",
+    caption: "La bici",
+  },
+  {
+    src: "images/barra-tazas-1.jpg",
+    width: 1080,
+    height: 810,
+    alt: "Tazas de rayas en la barra, con el local al fondo.",
+    caption: "Tazas",
+  },
+  {
+    src: "images/barra-tazas-2.jpg",
+    width: 1080,
+    height: 810,
+    alt: "Otra vista de las tazas de rayas en la barra de mármol.",
+    caption: "En la barra",
+  },
+  {
+    src: "images/barra-tazas-3.jpg",
+    width: 1080,
+    height: 810,
+    alt: "Tazas de colores sobre la barra, con la cafetera detrás.",
+    caption: "Más tazas",
   },
   {
     src: "images/flatlay.jpg",
@@ -164,15 +277,36 @@ export const gallery = [
     alt: "Cuatro tazas vistas desde arriba: grano, café molido, espresso y un latte con corazón.",
     caption: "De grano a taza",
   },
+  {
+    src: "images/latte-art.jpg",
+    width: 640,
+    height: 1136,
+    alt: "Latte con espuma en la barra de mármol.",
+    caption: "Latte",
+  },
+  {
+    src: "images/cuadro-teckel.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "Cuadro de un teckel en la pared del local, junto a una figura del perro.",
+    caption: "El teckel",
+  },
+  {
+    src: "images/terraza-acera.webp",
+    width: 580,
+    height: 327,
+    alt: "Mesas y sombrillas en la acera de la Alameda.",
+    caption: "En la acera",
+  },
 ] as const;
 
 export const media = {
   logo: "images/logo.jpg",
   logoWidth: 350,
   logoHeight: 381,
-  fachada: "images/fachada.webp",
-  fachadaWidth: 375,
-  fachadaHeight: 500,
+  fachada: "images/fachada-maps.jpg",
+  fachadaWidth: 1000,
+  fachadaHeight: 1333,
   heroVideo: "videos/hero-cup.mp4",
   heroPoster: "images/flatlay.jpg",
   heroPosterWidth: 1080,
@@ -190,8 +324,9 @@ export function cafeJsonLd() {
     url: pageUrl(),
     image: [
       absolute(media.fachada),
+      absolute("images/interior-bici.jpg"),
+      absolute("images/terraza-desayuno.jpg"),
       absolute(media.heroPoster),
-      absolute("images/barra-tazas.jpg"),
     ],
     telephone: site.phoneTel,
     email: site.email,
@@ -244,10 +379,15 @@ export function menuJsonLd() {
     name: `Carta de ${site.name}`,
     url: pageUrl("/carta"),
     inLanguage: "es",
-    hasMenuSection: menu.map((item) => ({
+    hasMenuSection: menu.map((section) => ({
       "@type": "MenuSection",
-      name: item.name,
-      description: item.text,
+      name: section.name,
+      description: section.intro,
+      hasMenuItem: section.items.map((item) => ({
+        "@type": "MenuItem",
+        name: item.name,
+        description: item.text,
+      })),
     })),
   };
 }
