@@ -1,0 +1,64 @@
+---
+import { asset, menu, site } from "../data/site";
+---
+
+<article class="carta-page">
+  <header class="wrap page-hero">
+    <p class="eyebrow">Carta</p>
+    <h1>La carta</h1>
+    <p class="price-legend">
+      Precios en el local · <strong class="flag">[por confirmar]</strong>
+    </p>
+    <p class="lede">
+      Lo que se pide, según reseñas y redes. No es la carta completa y no hay precios publicados.
+      Si quieres el de hoy, llama. 🖤
+    </p>
+    <div class="cta">
+      <a class="btn btn-fill" href={`tel:${site.phoneTel}`}>Llamar · {site.phoneDisplay}</a>
+    </div>
+  </header>
+
+  <div class="wrap carta-layout">
+    <nav class="carta-index" aria-label="Secciones de la carta">
+      {
+        menu.map((section) => (
+          <a href={`#${section.id}`}>{section.name}</a>
+        ))
+      }
+    </nav>
+    <div>
+      {
+        menu.map((section) => (
+          <section class="menu-section" id={section.id}>
+            {"image" in section && section.image && (
+              <figure class="menu-photo">
+                <img
+                  src={asset(section.image)}
+                  width={section.imageW}
+                  height={section.imageH}
+                  alt={section.imageAlt}
+                  loading="lazy"
+                />
+              </figure>
+            )}
+            <h2>{section.name}</h2>
+            <p class="section-intro">{section.intro}</p>
+            <ul class="plates">
+              {section.items.map((item) => (
+                <li>
+                  <h3>{item.name}</h3>
+                  <p>{item.text}</p>
+                </li>
+              ))}
+            </ul>
+            {"note" in section && section.note && (
+              <p class="pending">
+                <strong class="flag">[por confirmar]</strong> {section.note}
+              </p>
+            )}
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</article>

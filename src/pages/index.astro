@@ -1,8 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
+import FotoTira from "../components/FotoTira.astro";
 import Sobre from "../components/Sobre.astro";
-import CartaList from "../components/CartaList.astro";
+import CartaTeaser from "../components/CartaTeaser.astro";
 import Galeria from "../components/Galeria.astro";
 import Opiniones from "../components/Opiniones.astro";
 import Ubicacion from "../components/Ubicacion.astro";
@@ -11,8 +12,9 @@ import { cafeJsonLd, site } from "../data/site";
 
 <Base title={`${site.name} | Cafetería en Alcoy (Alcoi)`} jsonLd={cafeJsonLd()}>
   <Hero />
+  <FotoTira />
   <Sobre />
-  <CartaList />
+  <CartaTeaser />
   <Galeria />
   <Ubicacion />
   <Opiniones />
